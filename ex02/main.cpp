@@ -1,0 +1,5 @@
+#include "Bureaucrat.hpp"
+#include "AForm.hpp"
+#include "ShruberyCreationForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"

@@ -1,6 +1,2 @@
 #include "Bureaucrat.hpp"
-
-int main(){
-
-
-}
+#include "Formm.hpp"
