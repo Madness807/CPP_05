@@ -11,6 +11,8 @@ const std::string GREEN = "\033[1;32m";
 #define MAX_GRADE 1
 #define MIN_GRADE 150
 
+class AForm;
+
 class Bureaucrat {
 	private:
 		const std::string _name;
@@ -21,7 +23,7 @@ class Bureaucrat {
 		Bureaucrat();
 
 		// Constructeur prenant une string
-		Bureaucrat(std::string name, int grade);
+		Bureaucrat(std::string name,const int grade);
 
 		// Constructeur par copie
 		Bureaucrat(Bureaucrat const & instance);
@@ -39,6 +41,8 @@ class Bureaucrat {
 		//Methode
 		void up_grade();
 		void down_grade();
+		void signForm(AForm& form);
+		void executeForm(AForm const & form) const;
 
 		// class functions
 		class GradeTooHighException: public std::exception {
@@ -53,5 +57,7 @@ class Bureaucrat {
 };
 
 std::ostream & operator<<(std::ostream & o, Bureaucrat &rhs);
+
+
 
 #endif

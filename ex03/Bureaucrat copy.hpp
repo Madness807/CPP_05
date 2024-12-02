@@ -14,14 +14,14 @@ const std::string GREEN = "\033[1;32m";
 class Bureaucrat {
 	private:
 		const std::string _name;
-		int _grade;
+		const int _grade;
 
 	public:
 		// Constructeur par default
 		Bureaucrat();
 
 		// Constructeur prenant une string
-		Bureaucrat(std::string name, int grade);
+		Bureaucrat(std::string name,const int grade);
 
 		// Constructeur par copie
 		Bureaucrat(Bureaucrat const & instance);
@@ -53,5 +53,7 @@ class Bureaucrat {
 };
 
 std::ostream & operator<<(std::ostream & o, Bureaucrat &rhs);
+
+
 
 #endif

@@ -1,4 +1,5 @@
 # include "Bureaucrat.hpp"
+# include "AForm.hpp"
 
 //##################################################################
 //                   Constructor && Destructor                     #
@@ -76,8 +77,24 @@ void Bureaucrat::up_grade(){
 	}
 }
 
+void Bureaucrat::signForm(AForm& Aform) {
+    try {
+        Aform.beSigned(*this);
+        std::cout << GREEN << this->getName() << " signed " << Aform.getName() << std::endl;
+    }
+    catch (std::exception& e) {
+        std::cout << RED << this->getName() << " couldn't sign " << Aform.getName() 
+                 << " because " << e.what() << std::endl;
+    }
+}
 
-std::ostream & operator<<(std::ostream & o, Bureaucrat &rhs){
-	o << rhs.getName() << ", bureaucrat grade " << rhs.getGrade() << std::endl;
-	return o;
+void Bureaucrat::executeForm(AForm const & Aform) const {
+    try {
+        Aform.execute(*this);
+        std::cout << GREEN << this->getName() << " executed " << Aform.getName() << std::endl;
+    }
+    catch (std::exception& e) {
+        std::cout << RED << this->getName() << " couldn't execute " << Aform.getName() 
+                 << " because " << e.what() << std::endl;
+    }
 }
