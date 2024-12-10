@@ -85,3 +85,7 @@ std::ostream &operator<<(std::ostream &o, const Bureaucrat &bur) {
     o << bur.getName() << ", bureaucrat grade " << bur.getGrade() << ".";
     return o;
 }
+
+void Bureaucrat::test()
+{
+}
