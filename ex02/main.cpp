@@ -1,7 +1,8 @@
 #include "./include/Bureaucrat.hpp"
-#include "./include/Form.hpp"
-#include <iostream>
-#include <string>
+#include "./include/AForm.hpp"
+#include "./include/ShrubberyCreationForm.hpp"
+#include "./include/PresidentialPardonForm.hpp"
+#include "./include/RobotomyRequestForm.hpp"
 
 int main() {
 
@@ -10,7 +11,7 @@ int main() {
         Bureaucrat thiery("Bob", 666);
         std::cout << thiery << std::endl;
 
-        Form formA("FormA", 50, 5);
+        AForm Aform("FormA", 50, 5);
         std::cout << formA << std::endl;
 
         thiery.signForm(formA);
@@ -24,7 +25,7 @@ int main() {
         Bureaucrat thiery("Thiery", 50);
         std::cout << thiery << std::endl;
 
-        Form formA("FormA", 20, 5);
+        AForm formA("FormA", 20, 5);
         std::cout << formA << std::endl;
 
         thiery.signForm(formA);
@@ -39,7 +40,7 @@ int main() {
         Bureaucrat thiery("Maude", 50);
         std::cout << thiery << std::endl;
 
-        Form formA("FormA", 60, 5);
+        AForm formA("FormA", 60, 5);
         std::cout << formA << std::endl;
 
         thiery.signForm(formA);
@@ -52,3 +53,4 @@ int main() {
 
     return 0;
 }
+

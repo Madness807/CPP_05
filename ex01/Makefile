@@ -8,7 +8,7 @@ CC = g++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 # Fichiers sources
-SRC = main.cpp Bureaucrat.cpp Form.cpp
+SRC = main.cpp ./src/Bureaucrat.cpp ./src/Form.cpp
 
 # Règle par défaut
 all: $(NAME)

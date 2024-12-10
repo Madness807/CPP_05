@@ -1,4 +1,4 @@
-#include "Form.hpp"
+#include "../include/Form.hpp"
 
 //##################################################################
 //                   Constructor && Destructor                     #
@@ -25,6 +25,10 @@ Form &Form::operator=(const Form &src) {
         this->_signed = src._signed;
     }
     return *this;
+}
+
+void Form::setSigned(bool signature){
+    this->_signed = signature;
 }
 
 //##################################################################

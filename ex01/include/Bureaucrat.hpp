@@ -6,6 +6,7 @@
 
 #include <iostream>
 #include <string>
+
 class Form;
 
 class Bureaucrat {
@@ -28,19 +29,19 @@ class Bureaucrat {
 	//methode pour incrementer et decrementer le grade
 	void			incrementGrade();
 	void			decrementGrade();
-	void			signForm(const Form &form);
+	void			signForm(Form &form);
 
 	//methode pour gerer les exceptions
 	class GradeTooHighException : public std::exception {
 	public:
 		virtual const char* what() const throw(){
-			return "\033[31mGrade is too high\033[0m";
+			return "\033[31mGrade is too high (bureaucrat)\033[0m";
 		}
 	};
 	class GradeTooLowException : public std::exception {
 	public:
 		virtual const char* what() const throw(){
-			return "\033[31mGrade is too low\033[0m";
+			return "\033[31mGrade is too low (bureaucrat)\033[0m";
 		}
 	};
 };

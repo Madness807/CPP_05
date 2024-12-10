@@ -1,6 +1,7 @@
-#include "Bureaucrat.hpp"
+#include "../include/Bureaucrat.hpp"
 #include <iostream>
 #include <string>
+#include "../include/Form.hpp"
 
 //##################################################################
 //                   Constructor && Destructor                     #
@@ -8,13 +9,13 @@
 Bureaucrat::Bureaucrat() : _name("Unnamed"), _grade(LOWEST_GRADE) {}
 
 Bureaucrat::Bureaucrat(std::string name, unsigned int grade) : _name(name) {
-    std::cout << this->_name <<", Try to create " << this->_name << std::endl;
+    std::cout <<"Try to create " << this->_name << std::endl;
     if (grade < HIGHEST_GRADE)
         throw GradeTooHighException();
     else if (grade > LOWEST_GRADE)
         throw GradeTooLowException();
     this->_grade = grade;
-    std::cout << this->_name <<", Created " << this->_name << std::endl;
+    std::cout <<"Created " << this->_name << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &src) : _name(src.getName() + "_copy") {
@@ -63,8 +64,16 @@ void Bureaucrat::decrementGrade() {
     this->_grade++;
 }
 
-void			signForm(const Form &form) {
-    if (form)
+void Bureaucrat::signForm(Form &form) {
+    std::cout << this->_name <<", Try to Sign the form" << std::endl;
+
+    if (this->_grade > form.getGradeToSign()){
+        std::cout << this->getName() << " couldn't sign " << form.getName() << " because ";
+        throw Form::GradeTooLowException();
+    }
+    form.setSigned(1);
+
+    std::cout << this->_name <<", \033[32mForm is signed\033[0m" << std::endl;
 }
 
 //##################################################################
