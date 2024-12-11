@@ -7,15 +7,18 @@
 #include "Bureaucrat.hpp"
 
 class PresidentialPardonForm : public AForm {
+	private:
+		std::string _target;
 	public:
-		PresidentialPardonForm();
-		PresidentialPardonForm(const PresidentialPardonForm &src);
+		
+		PresidentialPardonForm();//default
+		PresidentialPardonForm(const PresidentialPardonForm &src);//copy
+		PresidentialPardonForm(std::string target);//param
 		virtual ~PresidentialPardonForm();
 		
-		AForm &operator=(const PresidentialPardonForm &src);
+		PresidentialPardonForm &operator=(const PresidentialPardonForm &src);
 
-		void	execute(const Bureaucrat &Bureaucrat);
-
+		void	execute(const Bureaucrat &executor) const;
 };
 
 std::ostream &operator<<(std::ostream &o, const AForm &form);

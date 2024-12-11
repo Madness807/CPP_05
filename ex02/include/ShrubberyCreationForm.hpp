@@ -3,20 +3,22 @@
 
 #include <iostream>
 #include <string>
+#include <fstream>//permet de manipuler des fichiers
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
 class ShrubberyCreationForm : public AForm {
+	private:
+		std::string _target;
 	public:
 		ShrubberyCreationForm();
 		ShrubberyCreationForm(const ShrubberyCreationForm &src);
+		ShrubberyCreationForm(std::string target);
 		virtual ~ShrubberyCreationForm();
 		
-		AForm &operator=(const ShrubberyCreationForm &src);
+		ShrubberyCreationForm &operator=(const ShrubberyCreationForm &src);
 
-		void	Executed(const Bureaucrat &Bureaucrat);
-		virtual void	execute(const Bureaucrat &Bureaucrat) = 0;
-
+		void	execute(const Bureaucrat &executor) const;
 };
 
 std::ostream &operator<<(std::ostream &o, const AForm &form);

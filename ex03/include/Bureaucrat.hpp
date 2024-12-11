@@ -6,40 +6,46 @@
 
 #include <iostream>
 #include <string>
-#include "Form.hpp"
+
+class AForm;
 
 class Bureaucrat {
-private:
-    const std::string _name;
-    unsigned int _grade;
 
-public:
-    Bureaucrat();
-    Bureaucrat(std::string name, unsigned int grade);
-    Bureaucrat(const Bureaucrat &src);
-    virtual ~Bureaucrat();
-    Bureaucrat &operator=(const Bureaucrat &src);
+	private:
+		const std::string _name;
+		unsigned int _grade;
 
-    // getter et setter
-    std::string getName() const;
-    unsigned int getGrade() const;
+	public:
+		Bureaucrat();
+		Bureaucrat(std::string name, unsigned int grade);
+		Bureaucrat(const Bureaucrat &src);
+		virtual ~Bureaucrat();
+		Bureaucrat &operator=(const Bureaucrat &src);
 
-    // méthode pour incrémenter et décrémenter le grade
-    void incrementGrade();
-    void decrementGrade();
+	//getter et setter
+	std::string     getName() const;
+	unsigned int    getGrade() const;
 
-    // méthode pour signer un formulaire
-    void signForm(Form &form);
+	//methode pour incrementer et decrementer le grade
+	void			incrementGrade();
+	void			decrementGrade();
+	void			signForm(AForm &form);
+	void			executeForm(AForm & form);
 
-    // méthode pour gérer les exceptions
-    class GradeTooHighException : public std::exception {
-    public:
-        virtual const char* what() const throw();
-    };
-    class GradeTooLowException : public std::exception {
-    public:
-        virtual const char* what() const throw();
-    };
+
+	//methode pour gerer les exceptions
+	class GradeTooHighException : public std::exception {
+	public:
+		virtual const char* what() const throw(){
+			return "\033[31mGrade is too high (bureaucrat)\033[0m";
+		}
+	};
+	class GradeTooLowException : public std::exception {
+	public:
+		virtual const char* what() const throw(){
+			return "\033[31mGrade is too low (bureaucrat)\033[0m";
+		}
+	};
 };
 
 std::ostream &operator<<(std::ostream &o, const Bureaucrat &bur);

@@ -1,37 +1,51 @@
 #include "../include/AForm.hpp"
+#include "../include/ShrubberyCreationForm.hpp"
+
 
 //##################################################################
 //                   Constructor && Destructor                     #
 //##################################################################
-AForm::AForm() : _name("Unnamed"), _signed(false), _gradeToSign(LOWEST_GRADE), _gradeToExecute(LOWEST_GRADE) {}
 
-AForm::AForm(std::string name, unsigned int gradeToSign, unsigned int gradeToExecute)
-    : _name(name), _signed(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute) {
-    if (gradeToSign < HIGHEST_GRADE || gradeToExecute < HIGHEST_GRADE)
-        throw AForm::GradeTooHighException();
-    if (gradeToSign > LOWEST_GRADE || gradeToExecute > LOWEST_GRADE)
-        throw AForm::GradeTooLowException();
-}
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &src) : AForm(src) {}//copy
 
-AForm::AForm(const AForm &src) : _name(src._name), _signed(src._signed), _gradeToSign(src._gradeToSign), _gradeToExecute(src._gradeToExecute) {}
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 145, 137, target) {}//param
 
-AForm::~AForm() {}
+ShrubberyCreationForm::~ShrubberyCreationForm(){}
 
 //##################################################################
 //	            	Operateur d'affectation		                   #
 //##################################################################
-
-
-//##################################################################
-//                          GETTERS                                #
-//##################################################################
-
+    ShrubberyCreationForm & ShrubberyCreationForm::operator=(const ShrubberyCreationForm &src)
+{
+    if (this != &src) {
+        AForm::operator=(src);
+    }
+    return *this;
+}
 
 //##################################################################
 //                          Methodes                               #
 //##################################################################
 
+void ShrubberyCreationForm::execute(const Bureaucrat &executor) const {
+    checkExecution(executor); // Vérifie les permissions basées sur le grade de l'executor
 
-//##################################################################
-//                          Operateur <<                           #
-//##################################################################
+    std::string filename = this->getTarget() + "_shrubbery";
+    std::ofstream file(filename.c_str());
+    if (!file) {
+        throw std::runtime_error("Could not open file.");
+    }
+
+    file << "       _-_       \n"
+         << "    /~~   ~~\\    \n"
+         << " /~~         ~~\\ \n"
+         << "{               }\n"
+         << " \\  _-     -_  / \n"
+         << "   ~  \\\\ //  ~   \n"
+         << "       | |       \n"
+         << "       | |       \n";
+    file.close();
+
+    std::cout << "Shrubbery created in " << filename << std::endl;
+}
+

@@ -6,51 +6,77 @@
 
 int main() {
 
-    std::cout << "" << std::endl; 
-    try {
-        Bureaucrat thiery("Bob", 666);
-        std::cout << thiery << std::endl;
+	std::cout << "" << std::endl;
 
-        AForm Aform("FormA", 50, 5);
-        std::cout << formA << std::endl;
+	//test du presedentialPardonForm
+	std::cout << "\033[33mTest Presidential Pardon Form\033[0m" << std::endl;
+	std::cout << "-----------------------------------------------" << std::endl;
+	try {
+		Bureaucrat thiery("BoZafod Beeblebrox", 2);
+		std::cout << thiery << std::endl;
+		std::cout << "" << std::endl;
 
-        thiery.signForm(formA);
-        std::cout << formA << std::endl;
-    } catch (std::exception &e) {
-        std::cout << e.what() << std::endl;
-    }
+		PresidentialPardonForm formB("julie");
+		std::cout << formB << std::endl;
+	
+		thiery.signForm(formB);
+		std::cout << formB << std::endl;
+		std::cout << "" << std::endl;
 
-    std::cout << "" << std::endl; 
-    try {
-        Bureaucrat thiery("Thiery", 50);
-        std::cout << thiery << std::endl;
+		thiery.executeForm(formB);
 
-        AForm formA("FormA", 20, 5);
-        std::cout << formA << std::endl;
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
 
-        thiery.signForm(formA);
-        std::cout << formA << std::endl;
-    } catch (std::exception &e) {
-        std::cout << e.what() << std::endl;
-    }
+	std::cout << "" << std::endl;
+	std::cout << "" << std::endl;
 
-    std::cout << "" << std::endl; 
+	//test du RobotomyRequestForm
+	std::cout << "\033[33mTest Robotomy Request Form\033[0m" << std::endl;
+	std::cout << "-----------------------------------------------" << std::endl;
+	try {
+		Bureaucrat thiery("Isacc", 60);
+		std::cout << thiery << std::endl;
+		std::cout << "" << std::endl;
 
-        try {
-        Bureaucrat thiery("Maude", 50);
-        std::cout << thiery << std::endl;
+		RobotomyRequestForm formB("c3po");
+		std::cout << formB << std::endl;
 
-        AForm formA("FormA", 60, 5);
-        std::cout << formA << std::endl;
+		thiery.signForm(formB);
+		std::cout << formB << std::endl;
+		std::cout << "" << std::endl;
 
-        thiery.signForm(formA);
-        std::cout << formA << std::endl;
-    } catch (std::exception &e) {
-        std::cout << e.what() << std::endl;
-    }
+		thiery.executeForm(formB);
 
-    std::cout << "" << std::endl; 
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
 
-    return 0;
+	std::cout << "" << std::endl;
+	std::cout << "" << std::endl;
+
+	//test du ShrubberyCreationForm
+	std::cout << "\033[33mTest Shrubbery Creation Form\033[0m" << std::endl;
+	std::cout << "-----------------------------------------------" << std::endl;
+	try {
+		Bureaucrat thiery("thiery", 144);
+		std::cout << thiery << std::endl;
+		std::cout << "" << std::endl;
+
+		ShrubberyCreationForm form("claude");
+		std::cout << form << std::endl;
+	
+		thiery.signForm(form);
+		std::cout << form << std::endl;
+		std::cout << "" << std::endl;
+
+		thiery.executeForm(form);
+
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+
+
+	return 0;
 }
-

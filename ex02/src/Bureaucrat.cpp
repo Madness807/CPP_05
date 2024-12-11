@@ -76,6 +76,27 @@ void Bureaucrat::signForm(AForm &form) {
     std::cout << this->_name <<", \033[32mForm is signed\033[0m" << std::endl;
 }
 
+void Bureaucrat::executeForm(AForm &form) {
+    std::cout << this->_name << " tries to execute the form " << form.getName() << "." << std::endl;
+
+    try {
+        if (!form.getSigned()) {
+            throw AForm::FormNotSignedException();
+        }
+
+        if (this->_grade > form.getGradeToExecute()) {
+            throw AForm::GradeTooLowException();
+        }
+
+        form.execute(*this); // Passe l'objet Bureaucrat pour valider l'exécution
+        std::cout << this->_name << "\033[32m successfully executed \033[0m" << form.getName() << " on target " << form.getTarget() << "." << std::endl;
+    } catch (const std::exception &e) {
+        //message d erreure en rouge
+        std::cerr << this->_name << " \033[31m couldn't execute the form \033[0m" << form.getName()
+                  << " because: " << e.what() << std::endl;
+    }
+}
+
 //##################################################################
 //                          Operateur <<                           #
 //##################################################################
